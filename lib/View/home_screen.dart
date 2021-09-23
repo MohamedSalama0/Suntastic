@@ -38,7 +38,8 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 10.0,
             ),
              TextField(
-              keyboardType: TextInputType.number,
+               enabled: false,
+               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15.0),
@@ -52,6 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 15.0,
             ),
              TextField(
+               enabled: false,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
@@ -71,9 +73,6 @@ class _HomeScreenState extends State<HomeScreen> {
               clipBehavior: Clip.antiAliasWithSaveLayer,
               onPressed: ()
               {
-                setState(() {
-                  bool;
-                });
               },
               child: const Text('Click to show Graph'),
               style: ElevatedButton.styleFrom(
