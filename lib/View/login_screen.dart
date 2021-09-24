@@ -1,20 +1,32 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:suntastic/View/home_screen.dart';
+import 'package:suntastic/View/map_screen.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final controller = TextEditingController();
+  LatLng? locationToSearch;
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffFFC069),
+      backgroundColor: Color(0xffF2D974),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Container(
+                child: Image.asset('images/sunlogo.png',scale: 1.5,),
+              ),
               Container(
                 padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
                 child: const Text(
@@ -46,6 +58,16 @@ class LoginScreen extends StatelessWidget {
                 height: 10,
               ),
               TextField(
+                controller: controller,
+                readOnly: true,
+                onTap: () async {
+                  final recievedData = await Navigator.push<LatLng>(
+                      context, MaterialPageRoute(builder: (_) => MapScreen()));
+                  if (recievedData == null) return;
+                  controller.text =
+                      '(${recievedData.latitude} , ${recievedData.longitude})';
+                  locationToSearch = recievedData;
+                },
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
@@ -63,11 +85,12 @@ class LoginScreen extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
+                  if (locationToSearch == null) return;
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return const HomeScreen();
+                        return HomeScreen(position: locationToSearch!);
                       },
                     ),
                   );
@@ -93,7 +116,7 @@ class LoginScreen extends StatelessWidget {
                           "START ",
                           style: Theme.of(context).textTheme.button!.copyWith(
                                 color: Colors.black,
-                            fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.bold,
                               ),
                         ),
                         const SizedBox(width: 10),
