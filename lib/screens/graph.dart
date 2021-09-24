@@ -22,11 +22,12 @@ class _GraphScreenState extends State<GraphScreen> {
       return TemperatureModel(day: element.key, temp: element.value);
     }).toList();
     int startIndex = 0;
-    for (; startIndex < list.length - 7; startIndex += 7)
+    for (; startIndex < list.length - 7; startIndex += 7) {
       avg.add(list.first.getAverage(list
           .getRange(startIndex, startIndex + 7)
           .map((e) => e.temp)
           .toList()));
+    }
     print(avg.length);
     super.initState();
   }
@@ -34,24 +35,21 @@ class _GraphScreenState extends State<GraphScreen> {
   @override
   Widget build(BuildContext context) {
     print(maxYVal);
-    return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: Container(
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Container(
-              width: 700,
-              child: LineChart(
-                LineChartData(
-                  lineTouchData: LineTouchData(enabled: false),
-                  minY: 0,
-                  maxY: 45,
-                  lineBarsData: _allCharts,
-                  gridData: _buildGridData(),
-                  borderData: _buildBorders(),
-                  titlesData: _buildTitles(),
-                ),
+    return Center(
+      child: Container(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Container(
+            width: 700,
+            child: LineChart(
+              LineChartData(
+                lineTouchData: LineTouchData(enabled: false),
+                minY: 0,
+                maxY: 45,
+                lineBarsData: _allCharts,
+                gridData: _buildGridData(),
+                borderData: _buildBorders(),
+                titlesData: _buildTitles(),
               ),
             ),
           ),

@@ -21,7 +21,10 @@ class _HomeScreenState extends State<HomeScreen> {
           'Suntastic',
           style: TextStyle(color: Colors.black),
         ),
-        leading: Image.asset('images/19343422541551682371-128.png'),
+        leading: Image.asset(
+          'images/19343422541551682371-128.png',
+          scale: 2.5 ,
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(30.0),
@@ -37,9 +40,9 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(
               height: 10.0,
             ),
-             TextField(
-               enabled: false,
-               keyboardType: TextInputType.number,
+            TextField(
+              enabled: false,
+              keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15.0),
@@ -52,8 +55,8 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(
               height: 15.0,
             ),
-             TextField(
-               enabled: false,
+            TextField(
+              enabled: false,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
@@ -71,9 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ///Click Button
             ElevatedButton(
               clipBehavior: Clip.antiAliasWithSaveLayer,
-              onPressed: ()
-              {
-              },
+              onPressed: () {},
               child: const Text('Click to show Graph'),
               style: ElevatedButton.styleFrom(
                 side: const BorderSide(
