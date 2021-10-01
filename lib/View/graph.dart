@@ -32,34 +32,37 @@ class _GraphScreenState extends State<GraphScreen> {
           builder: (_, constraints) {
             final graphHeight = constraints.maxHeight - 70;
             return SingleChildScrollView(
-              child: Column(
-                children: [
-                  SliderWidget(),
-                  SizedBox(height: 20),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ExpansionPanelList.radio(
-                      animationDuration: Duration(milliseconds: 1100),
-                      dividerColor: Colors.black,
-                      initialOpenPanelValue: 'Temperatures Graph',
-                      expandedHeaderPadding: const EdgeInsets.all(0),
-                      children: [
-                        _buildExpansionTile(
-                            height: graphHeight,
-                            data: temperatures,
-                            text: 'Temperatures Graph'),
-                        _buildExpansionTile(
-                            height: graphHeight,
-                            data: pressures,
-                            text: 'Pressures Graph'),
-                        _buildExpansionTile(
-                            height: graphHeight,
-                            data: wind,
-                            text: 'Wind Graph'),
-                      ],
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 170.0),
+                child: Column(
+                  children: [
+                    SliderWidget(),
+                    SizedBox(height: 20),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ExpansionPanelList.radio(
+                        animationDuration: Duration(milliseconds: 1100),
+                        dividerColor: Colors.black,
+                        initialOpenPanelValue: 'Temperatures Graph',
+                        expandedHeaderPadding: const EdgeInsets.all(0),
+                        children: [
+                          _buildExpansionTile(
+                              height: graphHeight,
+                              data: temperatures,
+                              text: 'Temperatures Graph'),
+                          _buildExpansionTile(
+                              height: graphHeight,
+                              data: pressures,
+                              text: 'Pressures Graph'),
+                          _buildExpansionTile(
+                              height: graphHeight,
+                              data: wind,
+                              text: 'Wind Graph'),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             );
           },
