@@ -42,64 +42,60 @@ class _HomeScreenState extends State<HomeScreen> {
             double.parse(formatter.format(endTime!))),
         child: Builder(
           builder: (context) => Padding(
-            padding: const EdgeInsets.all(30.0),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  ListTile(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ListTile(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(13.0)
-                    ),
-                      tileColor: Color(0xffFFD523),
-                      contentPadding: EdgeInsets.only(left: 60.0),
-                      title: Text(
-                          'Selected date range:\nFrom ${startTime == null ? null : DateFormat('yyyy/MM/dd').format(startTime!)}\nTo ${endTime == null ? null : DateFormat('yyyy/MM/dd').format(endTime!)}'),
-                      leading: Icon(Icons.lock),
-                      onTap: _chageTime),
+                        borderRadius: BorderRadius.circular(13.0)),
+                    tileColor: Color(0xffFFD523),
+                    contentPadding: EdgeInsets.only(left: 60.0),
+                    title: Text(
+                        'Selected date range:\nFrom ${startTime == null ? null : DateFormat('yyyy/MM/dd').format(startTime!)}\nTo ${endTime == null ? null : DateFormat('yyyy/MM/dd').format(endTime!)}'),
+                    leading: Icon(Icons.lock),
+                    onTap: _chageTime),
 
-                  ///Space
-                  const SizedBox(
-                    height: 10.0,
-                  ),
-                  const SizedBox(
-                    height: 15.0,
-                  ),
+                ///Space
+                const SizedBox(
+                  height: 10.0,
+                ),
+                const SizedBox(
+                  height: 15.0,
+                ),
 
-                  ///Click Button
-                  ElevatedButton(
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    onPressed: () async {
-                      if (startTime != null) {
-                        await TemporalCubit.instance(context)
-                            .getTemperaturesFromServer(
-                                double.parse(formatter.format(startTime!)),
-                                double.parse(formatter.format(endTime!)),
-                                widget.position);
-                      }
-                    },
-                    child: const Text('Click to show Graph',style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15.0
-                    ),),
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12.0)
-                      ),
-                      side: const BorderSide(
-                        color: Colors.white,
-                      ),
-                      elevation: 3.0,
-                      shadowColor: Colors.cyan,
-                      primary: Colors.grey,
-                      padding: const EdgeInsets.all(15.0),
-                    ),
+                ///Click Button
+                ElevatedButton(
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  onPressed: () async {
+                    if (startTime != null) {
+                      await TemporalCubit.instance(context)
+                          .getTemperaturesFromServer(
+                              double.parse(formatter.format(startTime!)),
+                              double.parse(formatter.format(endTime!)),
+                              widget.position);
+                    }
+                  },
+                  child: const Text(
+                    'Click to show Graph',
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),
                   ),
-                  const SizedBox(height: 20),
-                  if (startTime != null)
-                    SizedBox(height: 500, child: GraphScreen()),
-                ],
-              ),
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12.0)),
+                    side: const BorderSide(
+                      color: Colors.white,
+                    ),
+                    elevation: 3.0,
+                    shadowColor: Colors.cyan,
+                    primary: Colors.grey,
+                    padding: const EdgeInsets.all(15.0),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                if (startTime != null) Expanded(child: GraphScreen()),
+              ],
             ),
           ),
         ),

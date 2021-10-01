@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 import 'package:suntastic/services/dio_helper.dart';
 
 class RecievedData {
@@ -36,9 +35,9 @@ Future<RecievedData?> callAPI(String url,
       if ((response.data['success'] != null &&
               response.data['success'] != true) ||
           (response.data['status'] != null &&
-              response.data['status'] != 'success'))
+              response.data['status'] != 'success')) {
         error = response.data['message'];
-      else {
+      } else {
         try {
           return RecievedData(
               data: response.data, error: false, errorMessage: "");
@@ -46,12 +45,12 @@ Future<RecievedData?> callAPI(String url,
           throw 'Error:${e.toString()} occured.';
         }
       }
-    } else if (response.statusCode == 404)
+    } else if (response.statusCode == 404) {
       throw 'The requested page is not found try again!';
-    else if (response.statusCode! >= 400 && response.statusCode! < 500) {
-      if (response.data['message'] != null)
+    } else if (response.statusCode! >= 400 && response.statusCode! < 500) {
+      if (response.data['message'] != null) {
         error = response.data['message'];
-      else if (response.data['errors'] != null) {
+      } else if (response.data['errors'] != null) {
         error = (response.data['errors'] as Map<String, dynamic>)
             .entries
             .toList()[0]
