@@ -1,7 +1,7 @@
 import 'package:suntastic/Models/day_temperature_model.dart';
 
 class AllTemperaturesModel {
-  List<DayTemperatureModel> temperatures = [];
+  List<DayValueModel> temperatures = [];
   List<double> avgPerWeek = [];
   double totalAvg = 0;
   double maxTemp = 0;
@@ -16,7 +16,7 @@ class AllTemperaturesModel {
     if (properties['T2M'] != null) {
       final Map<String, dynamic> t2m = properties['T2M'];
       temperatures = t2m.entries
-          .map((e) => DayTemperatureModel(day: e.key, temp: e.value))
+          .map((e) => DayValueModel(day: e.key, temp: e.value))
           .toList();
       _calcAvgPerWeek();
       _calcTotalAvg();
@@ -31,10 +31,7 @@ class AllTemperaturesModel {
       return;
     }
     for (; startIndex < temperatures.length - 7; startIndex += 7) {
-      avgPerWeek.add(getListAverage(temperatures
-          .getRange(startIndex, startIndex + 7)
-          .map((e) => e.temp)
-          .toList()));
+      avgPerWeek.add(getListAverage(temperatures.getRange(startIndex, startIndex + 7).map((e) => e.temp).toList()));
     }
     print('calcAvgPerWeek');
   }
