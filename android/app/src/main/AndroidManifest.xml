@@ -3,6 +3,8 @@
    <application
         android:label="suntastic"
         android:icon="@mipmap/ic_launcher">
+     <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyDqotVnDFQfBQQqTI5EMu-O4kkrIxVAHuc"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
