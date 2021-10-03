@@ -1,6 +1,6 @@
 # suntastic
 
-## Problem:
+# Problem:
 
 Although adoption of solar energy was slow at first, a number of state and federal incentives and policies contributed to driving down the cost of solar panels far enough to become more widely adopted. At this point, solar power accounts for enough capacity to power 11 million of the 126 million households in the country.
 
@@ -28,7 +28,8 @@ Another problem that may exist is that we cannot predict the amount of sunshine 
 
 
 ![WhatsApp Image 2021-10-03 at 5 32 35 AM](https://user-images.githubusercontent.com/88866544/135774148-912079b7-3923-49b8-b725-794d935c20c8.jpeg)
-##Solution
+
+# Solution
 
 We designed an easy mobile application to the public users to be able to know how much solar power available in a certain area. Using this, one can have sufficient information to decide whether solar panels would be helpful in his area or not.
 
@@ -70,12 +71,12 @@ We used “The power” website to customize data and parameters using APIs whic
 
 
 
-##SPACE AGENCY DATA
-##DATA
+# SPACE AGENCY DATA
+# DATA
 
      NASA POWER Web Portal
 Amazon.com
-##REFERENCES
+# REFERENCES
 Energysage
 IRENA 
 
