@@ -21,15 +21,31 @@ class VisualizeGraphWidget extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             child: Container(
               width: TemporalCubit.instance(context).graphWidth,
-              child: LineChart(
-                LineChartData(
-                  minY: minVal.toInt() - (minVal.toInt() % 10) - 10,
-                  maxY: maxVal.toInt() + (maxVal.toInt() % 10) + 10,
-                  lineBarsData: _allCharts(),
-                  gridData: _buildGridData(),
-                  borderData: _buildBorders(),
-                  titlesData: _buildTitles(),
-                ),
+              child: Stack(
+                children: [
+                  Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Text(data.measureUnit,
+                          style: const TextStyle(fontWeight: FontWeight.bold))),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20.0),
+                    child: LineChart(
+                      LineChartData(
+                        minY: minVal.toInt() - (minVal.toInt() % 10) - 10,
+                        maxY: maxVal.toInt() + (maxVal.toInt() % 10) + 10,
+                        lineBarsData: _allCharts(),
+                        gridData: _buildGridData(),
+                        borderData: _buildBorders(),
+                        titlesData: _buildTitles(),
+                      ),
+                    ),
+                  ),
+                  const Positioned(
+                      bottom: 50,
+                      right: 0,
+                      child: Text('#Week',
+                          style: TextStyle(fontWeight: FontWeight.bold)))
+                ],
               ),
             ),
           ),

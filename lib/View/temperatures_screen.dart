@@ -31,12 +31,15 @@ class _TemperaturesGraphScreenState extends State<TemperaturesGraphScreen> {
               child: TemporalCubitBuilder(
                 builder: (_, state) {
                   return SizedBox(
-                    height: 500.0,
+                    height: 600.0,
                     child: Column(
                       children: [
-                        Text('${widget.name} Graph Data',
-                            style: const TextStyle(
-                                fontSize: 24, color: Colors.orange)),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('${widget.name} Graph Data',
+                              style: const TextStyle(
+                                  fontSize: 24, color: Colors.orange)),
+                        ),
                         Expanded(
                             child: VisualizeGraphWidget(data: widget.graphs)),
                       ],
