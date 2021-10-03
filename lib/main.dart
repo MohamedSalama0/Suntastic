@@ -24,10 +24,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Suntastic',
+      theme: ThemeData.dark(),
       home: AnimatedSplashScreen(
         duration: 2000,
         splash: Image.asset(
-          'images/SunSplash.jpg',
+          'assets/images/SunSplash.jpg',
           fit: BoxFit.cover,
         ),
         splashIconSize: double.infinity,

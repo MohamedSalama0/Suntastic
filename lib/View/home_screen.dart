@@ -15,23 +15,27 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  DateTime? startTime = DateTime.now().subtract(Duration(days: 365));
-  DateTime? endTime = DateTime.now().subtract(Duration(days: 2));
+  DateTime? startTime = DateTime.now().subtract(const Duration(days: 365));
+  DateTime? endTime = DateTime.now().subtract(const Duration(days: 2));
 
   @override
   Widget build(BuildContext context) {
     final formatter = DateFormat('yyyyMMdd');
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xff45526C),
       appBar: AppBar(
+        centerTitle: true,
         elevation: 0,
-        backgroundColor: Color(0xffB2B1B9),
+        backgroundColor: Colors.transparent,
         title: const Text(
           'Suntastic',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(
+            color: Colors.white,
+            fontFamily: "neue"
+          ),
         ),
         leading: Image.asset(
-          'images/sunlogo.png',
+          'assets/images/sunlogo.png',
           scale: 3.0,
         ),
       ),
@@ -49,11 +53,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 ListTile(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(13.0)),
-                    tileColor: Color(0xffFFD523),
-                    contentPadding: EdgeInsets.only(left: 60.0),
+                    tileColor: const Color(0xff628395),
+                    contentPadding: const EdgeInsets.only(left: 60.0),
                     title: Text(
-                        'Selected date range:\nFrom ${startTime == null ? null : DateFormat('yyyy/MM/dd').format(startTime!)}\nTo ${endTime == null ? null : DateFormat('yyyy/MM/dd').format(endTime!)}'),
-                    leading: Icon(Icons.lock),
+                      'Selected date range:\nFrom ${startTime == null ? null : DateFormat('yyyy/MM/dd').format(startTime!)}\nTo ${endTime == null ? null : DateFormat('yyyy/MM/dd').format(endTime!)}',
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    leading: const Icon(Icons.lock),
                     onTap: _chageTime),
 
                 ///Space
@@ -77,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     }
                   },
                   child: const Text(
-                    'Click to show Graph',
+                    'Click to Refresh',
                     style:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),
                   ),
@@ -89,12 +98,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     elevation: 3.0,
                     shadowColor: Colors.cyan,
-                    primary: Colors.grey,
+                    primary: const Color(0xff262A53),
                     padding: const EdgeInsets.all(15.0),
                   ),
                 ),
                 const SizedBox(height: 20),
-                if (startTime != null) Expanded(child: GraphScreen()),
+
+                if (startTime != null) const Expanded(child: GraphScreen()),
               ],
             ),
           ),
@@ -114,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
           end: endTime!,
         ),
         firstDate: DateTime(1980, 1, 1),
-        lastDate: nowDate.subtract(Duration(days: 2)));
+        lastDate: nowDate.subtract(const Duration(days: 2)));
     if (res == null) return;
     setState(() {
       startTime = res.start;

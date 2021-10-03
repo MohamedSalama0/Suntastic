@@ -10,8 +10,8 @@ class AllTemperaturesModel {
   AllTemperaturesModel.fromJson(Map<String, dynamic> json) {
     if (json['properties'] == null) return;
     final Map<String, dynamic> properties = json['properties']['parameter'];
-    if (json['header'] != null) if (json['header']['fill_value'] != null) {
-      _defaultUnknownTemp = json['header']['fill_value'];
+    if (json['header'] != null && json['header']['fill_value'] != null) {
+    _defaultUnknownTemp = json['header']['fill_value'];
     }
     if (properties['T2M'] != null) {
       final Map<String, dynamic> t2m = properties['T2M'];

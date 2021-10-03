@@ -5,6 +5,7 @@ class RecievedData {
   Map<String, dynamic> data;
   bool error;
   String errorMessage;
+
   RecievedData(
       {required this.data, required this.error, required this.errorMessage});
 }
@@ -13,6 +14,7 @@ enum CallType {
   Get,
   Post,
 }
+
 Future<RecievedData?> callAPI(String url,
     {Map<String, dynamic> body = const {},
     Map<String, dynamic> quiries = const {},
@@ -55,8 +57,9 @@ Future<RecievedData?> callAPI(String url,
             .entries
             .toList()[0]
             .value[0];
-      } else
+      } else {
         throw 'Client side error please modify it then retry.';
+      }
     }
   } on DioError catch (e) {
     print(e.toString());

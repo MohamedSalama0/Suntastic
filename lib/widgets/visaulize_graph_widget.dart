@@ -2,6 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:suntastic/Models/visualize_data_model.dart';
 import 'package:suntastic/cubits/temporal_cubit.dart';
+import 'package:suntastic/widgets/slider.dart';
 
 class VisualizeGraphWidget extends StatelessWidget {
   const VisualizeGraphWidget({Key? key, required this.data}) : super(key: key);
@@ -35,17 +36,24 @@ class VisualizeGraphWidget extends StatelessWidget {
         ),
         Text(
           'Average ${data.modelName} is ${graphData.totalAvg.ceil()} ${data.measureUnit}',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          textAlign: TextAlign.center,
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
         ),
         Text(
           'Min ${data.modelName} is ${graphData.minVal.floor()} ${data.measureUnit}',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          textAlign: TextAlign.center,
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
         ),
         Text(
           'Max ${data.modelName} is ${graphData.maxVal.ceil()} ${data.measureUnit}',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          textAlign: TextAlign.center,
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
         ),
-        Expanded(child: Container())
+        const Expanded(child: SizedBox()),
+        const Padding(
+          padding: EdgeInsets.only(left:8.0),
+          child: SliderWidget(),
+        ),
       ],
     );
   }
