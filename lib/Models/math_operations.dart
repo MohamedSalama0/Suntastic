@@ -8,6 +8,8 @@ class MathOperations {
     _makeCalculation();
   }
   void _makeCalculation() {
+    _list.removeWhere((element) => element.temp == -999);
+
     _calcAvgPerWeek();
     _calcTotalAvg();
     _calcMinMaxTemp();
