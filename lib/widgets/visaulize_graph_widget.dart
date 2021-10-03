@@ -34,27 +34,39 @@ class VisualizeGraphWidget extends StatelessWidget {
             ),
           ),
         ),
-        Text(
-          'Average ${data.modelName} is ${graphData.totalAvg.ceil()} ${data.measureUnit}',
-          textAlign: TextAlign.center,
-          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-        ),
-        Text(
-          'Min ${data.modelName} is ${graphData.minVal.floor()} ${data.measureUnit}',
-          textAlign: TextAlign.center,
-          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-        ),
-        Text(
-          'Max ${data.modelName} is ${graphData.maxVal.ceil()} ${data.measureUnit}',
-          textAlign: TextAlign.center,
-          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-        ),
+        _buildText('Average', graphData.totalAvg.ceil()),
+        _buildText('Min', graphData.minVal.ceil()),
+        _buildText('Max', graphData.maxVal.ceil()),
         const Expanded(child: SizedBox()),
         const Padding(
-          padding: EdgeInsets.only(left:8.0),
+          padding: EdgeInsets.only(left: 8.0),
           child: SliderWidget(),
         ),
       ],
+    );
+  }
+
+  Widget _buildText(String math, int val) {
+    var span = TextSpan(children: [
+      TextSpan(
+        text: '$math  ',
+        style: const TextStyle(
+            fontWeight: FontWeight.bold, fontSize: 20, color: Colors.orange),
+      ),
+      TextSpan(
+        text: '${data.modelName} is $val ',
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+      ),
+      TextSpan(
+        text: data.measureUnit,
+        style: const TextStyle(
+            color: Colors.orange, fontWeight: FontWeight.bold, fontSize: 20),
+      ),
+    ]);
+    return FittedBox(
+      child: RichText(
+        text: span,
+      ),
     );
   }
 

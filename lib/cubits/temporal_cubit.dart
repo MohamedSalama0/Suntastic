@@ -22,6 +22,7 @@ class TemporalCubit extends Cubit<TemporalStates> {
   TemperatureModel get temperatures => _temperaturesModel.temperatures;
   PressuresModel get pressures => _temperaturesModel.pressures;
   WindModel get wind => _temperaturesModel.wind;
+  SolarIrradians get solarIrradians => _temperaturesModel.solarIrradians;
 
   double graphWidth = 400;
 
@@ -34,7 +35,7 @@ class TemporalCubit extends Cubit<TemporalStates> {
           end: endTime.toInt(),
           lat: location.latitude,
           long: location.longitude,
-          params: 'T2M,PS,WS10M'));
+          params: 'T2M,PS,WS10M,ALLSKY_SFC_SW_DWN'));
       if (res!.error) {
         emit(ErrorTemporalState(errorMessage: res.errorMessage));
         return;

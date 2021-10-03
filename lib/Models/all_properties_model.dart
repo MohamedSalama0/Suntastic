@@ -4,6 +4,7 @@ class AllPropertiesModel {
   late TemperatureModel temperatures;
   late PressuresModel pressures;
   late WindModel wind;
+  late SolarIrradians solarIrradians;
   late double defaultUnknownTemp = 0;
   AllPropertiesModel.fromJson(Map<String, dynamic> json) {
     if (json['properties'] == null) return;
@@ -13,5 +14,6 @@ class AllPropertiesModel {
     temperatures = TemperatureModel.fromMap('T2M', properties);
     pressures = PressuresModel.fromMap('PS', properties);
     wind = WindModel.fromMap('WS10M', properties);
+    solarIrradians = SolarIrradians.fromMap('ALLSKY_SFC_SW_DWN', properties);
   }
 }

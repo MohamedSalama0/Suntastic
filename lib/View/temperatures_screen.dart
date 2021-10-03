@@ -5,10 +5,13 @@ import 'package:suntastic/cubits/temporal_cubit.dart';
 import 'package:suntastic/widgets/visaulize_graph_widget.dart';
 
 class TemperaturesGraphScreen extends StatefulWidget {
-  TemporalCubit cubit;
-  VisualizeDataModel graphs;
+  final TemporalCubit cubit;
+  final VisualizeDataModel graphs;
+  final String name;
 
-  TemperaturesGraphScreen({Key? key, required this.cubit, required this.graphs}) : super(key: key);
+  TemperaturesGraphScreen(
+      {Key? key, required this.cubit, required this.graphs, required this.name})
+      : super(key: key);
 
   @override
   _TemperaturesGraphScreenState createState() =>
@@ -20,27 +23,31 @@ class _TemperaturesGraphScreenState extends State<TemperaturesGraphScreen> {
   Widget build(BuildContext context) {
     return BlocProvider.value(
       value: widget.cubit,
-      child: Builder(
-        builder: (context) {
-          return Scaffold(
-            backgroundColor: const Color(0xff45526C),
-            body: SafeArea(
+      child: Builder(builder: (context) {
+        return Scaffold(
+          backgroundColor: const Color(0xff45526C),
+          body: SafeArea(
+            child: Center(
               child: TemporalCubitBuilder(
                 builder: (_, state) {
                   return SizedBox(
                     height: 500.0,
-                    child:Column(
+                    child: Column(
                       children: [
-                        Expanded(child: VisualizeGraphWidget(data: widget.graphs)),
+                        Text('${widget.name} Graph Data',
+                            style: const TextStyle(
+                                fontSize: 24, color: Colors.orange)),
+                        Expanded(
+                            child: VisualizeGraphWidget(data: widget.graphs)),
                       ],
                     ),
                   );
                 },
               ),
             ),
-          );
-        }
-      ),
+          ),
+        );
+      }),
     );
   }
 }

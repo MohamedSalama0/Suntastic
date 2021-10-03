@@ -47,3 +47,14 @@ class WindModel extends VisualizeDataModel {
   @override
   String get modelName => 'wind speed';
 }
+
+class SolarIrradians extends VisualizeDataModel {
+  SolarIrradians.fromMap(String key, Map<String, dynamic> map)
+      : super.fromMap(key, map);
+
+  @override
+  String get measureUnit => 'kW-hr/m^2/day';
+
+  @override
+  String get modelName => 'solar irradiance';
+}
