@@ -1,11 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:suntastic/Models/visualize_data_model.dart';
+import 'package:suntastic/View/temperatures_screen.dart';
 import 'package:suntastic/cubits/temporal_cubit.dart';
 import 'package:suntastic/cubits/temporal_states.dart';
-import 'package:suntastic/widgets/visaulize_graph_widget.dart';
-import 'package:suntastic/widgets/slider.dart';
+
 
 class GraphScreen extends StatefulWidget {
+  const GraphScreen({Key? key}) : super(key: key);
+
   @override
   _GraphScreenState createState() => _GraphScreenState();
 }
@@ -15,7 +17,7 @@ class _GraphScreenState extends State<GraphScreen> {
   Widget build(BuildContext context) {
     return Center(child: TemporalCubitBuilder(
       builder: (_, state) {
-        if (state is LoadingTemporalState) return CircularProgressIndicator();
+        if (state is LoadingTemporalState) return const CircularProgressIndicator();
         if (state is ErrorTemporalState) {
           return Center(
             child: Text(
@@ -30,37 +32,144 @@ class _GraphScreenState extends State<GraphScreen> {
 
         return LayoutBuilder(
           builder: (_, constraints) {
-            final graphHeight = constraints.maxHeight - 70;
             return SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 170.0),
                 child: Column(
                   children: [
-                    SliderWidget(),
-                    SizedBox(height: 20),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ExpansionPanelList.radio(
-                        animationDuration: Duration(milliseconds: 1100),
-                        dividerColor: Colors.black,
-                        initialOpenPanelValue: 'Temperatures Graph',
-                        expandedHeaderPadding: const EdgeInsets.all(0),
-                        children: [
-                          _buildExpansionTile(
-                              height: graphHeight,
-                              data: temperatures,
-                              text: 'Temperatures Graph'),
-                          _buildExpansionTile(
-                              height: graphHeight,
-                              data: pressures,
-                              text: 'Pressures Graph'),
-                          _buildExpansionTile(
-                              height: graphHeight,
-                              data: wind,
-                              text: 'Wind Graph'),
-                        ],
-                      ),
-                    ),
+                    const SizedBox(height: 20),
+                    GridView.count(
+                      scrollDirection:Axis.vertical,
+                      padding: const EdgeInsets.all(20.0),
+                      mainAxisSpacing: 15.0,
+                      crossAxisSpacing: 15.0,
+                      shrinkWrap: true,
+                      crossAxisCount: 2,
+                      children: [
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: const Color(0xff4B3869),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (BuildContext hossam) {
+                              return TemperaturesGraphScreen(
+                                  graphs: temperatures,
+                                  cubit: TemporalCubit.instance(context));
+                            }));
+                          },
+                          child: const Text(
+                            'solar\nirradiance\nGraph',
+                            textAlign: TextAlign.center,
+                            maxLines: 3,
+                            style: TextStyle(
+                              fontSize: 23.0,
+                              fontFamily: 'neue',
+                            ),
+                          ),
+                        ),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: const Color(0xff4B3869),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (BuildContext hossam) {
+                                  return TemperaturesGraphScreen(
+                                      graphs: temperatures,
+                                      cubit: TemporalCubit.instance(context));
+                                }));
+                          },
+                          child: const Text(
+                            'temperature\nالمفروض يعني',
+                            textAlign: TextAlign.center,
+                            maxLines: 2,
+                            style: TextStyle(
+                              fontSize: 23.0,
+                              fontFamily: 'neue',
+                            ),
+                          ),
+                        ),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: const Color(0xff4B3869),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (BuildContext hossam) {
+                              return TemperaturesGraphScreen(
+                                  graphs: wind,
+                                  cubit: TemporalCubit.instance(context));
+                            }));
+                          },
+                          child: const Text(
+                            'wind Graph',
+                            maxLines: 1,
+                            style: TextStyle(
+                              fontSize: 24.0,
+                              fontFamily: 'neue',
+                            ),
+                          ),
+                        ),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: const Color(0xff4B3869),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (BuildContext hossam) {
+                              return TemperaturesGraphScreen(
+                                  graphs: pressures,
+                                  cubit: TemporalCubit.instance(context));
+                            }));
+                          },
+                          child: const Text(
+                            'pressures\nGraph',
+                            textAlign: TextAlign.center,
+                            maxLines: 2,
+                            style: TextStyle(
+                              fontSize: 24.0,
+                              fontFamily: 'neue',
+                            ),
+                          ),
+                        ),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: const Color(0xff4B3869),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (BuildContext hossam) {
+                              return TemperaturesGraphScreen(
+                                  graphs: pressures,
+                                  cubit: TemporalCubit.instance(context));
+                            }));
+                          },
+                          child: const Text(
+                            'Solar Panels',
+                            style: TextStyle(
+                              fontSize: 24.0,
+                              fontFamily: 'neue',
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
                   ],
                 ),
               ),
@@ -69,26 +178,5 @@ class _GraphScreenState extends State<GraphScreen> {
         );
       },
     ));
-  }
-
-  ExpansionPanelRadio _buildExpansionTile({
-    required double height,
-    required VisualizeDataModel data,
-    required String text,
-  }) {
-    return ExpansionPanelRadio(
-      value: text,
-      canTapOnHeader: true,
-      headerBuilder: (_, isSelected) => Text(text,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Colors.deepPurple)),
-      body: Container(
-        height: height,
-        child: VisualizeGraphWidget(data: data),
-      ),
-    );
   }
 }

@@ -14,10 +14,11 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final controller = TextEditingController();
   LatLng? locationToSearch;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffF2D974),
+      backgroundColor: Color(0xff45526C),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -25,14 +26,18 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                child: Image.asset('images/sunlogo.png',scale: 1.5,),
+                child: Image.asset(
+                  'assets/images/sunlogo.png',
+                  scale: 2.0,
+                ),
               ),
               Container(
-                padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
                 child: const Text(
-                  'Welcomne To Suntastic',
+                  'Welcome To Suntastic',
                   style: TextStyle(
                     fontSize: 25.0,
+                    fontFamily: 'neue',
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
@@ -116,7 +121,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           "START ",
                           style: Theme.of(context).textTheme.button!.copyWith(
                                 color: Colors.black,
-                                fontWeight: FontWeight.bold,
+                                fontSize: 17.0,
+                                fontFamily: 'neue',
                               ),
                         ),
                         const SizedBox(width: 10),
