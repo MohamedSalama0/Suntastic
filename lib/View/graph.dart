@@ -50,7 +50,31 @@ class _GraphScreenState extends State<GraphScreen> {
                 FeatureTemporalButton(text: 'Temperatures', data: temperatures),
                 FeatureTemporalButton(text: 'Pressures', data: pressures),
                 FeatureTemporalButton(text: 'Wind', data: wind),
-                FeatureTemporalButton(text: 'Solar Panels', data: pressures),
+                ElevatedButton(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Text(
+                        'Solar Panels',
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          fontFamily: 'neue',
+                        ),
+                      ),
+                      Image.asset(
+                        'assets/images/amazon-29-226581.png',
+                        scale: 1.2,
+                      ),
+                    ],
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: const Color(0xff4B3869),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                  ),
+                  onPressed: () {},
+                ),
               ],
             );
           },
