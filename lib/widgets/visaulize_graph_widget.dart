@@ -19,12 +19,12 @@ class VisualizeGraphWidget extends StatelessWidget {
           flex: 13,
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            child: Container(
+            child: SizedBox(
               width: TemporalCubit.instance(context).graphWidth,
               child: Stack(
                 children: [
                   Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 20),
+                      margin: const EdgeInsets.symmetric(horizontal: 30),
                       child: Text(data.measureUnit,
                           style: const TextStyle(fontWeight: FontWeight.bold))),
                   Padding(
@@ -40,11 +40,11 @@ class VisualizeGraphWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Positioned(
+                  Positioned(
                       bottom: 50,
-                      right: 0,
-                      child: Text('#Week',
-                          style: TextStyle(fontWeight: FontWeight.bold)))
+                      right: 10,
+                      child: Text(data.graphDisplayName,
+                          style: const TextStyle(fontWeight: FontWeight.bold)))
                 ],
               ),
             ),
