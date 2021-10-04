@@ -1,3 +1,4 @@
+import 'package:date_ranger/date_ranger.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,6 +18,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   DateTime? startTime = DateTime.now().subtract(const Duration(days: 365));
   DateTime? endTime = DateTime.now().subtract(const Duration(days: 2));
+  bool showDateTime = true;
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.transparent,
         title: const Text(
           'Suntastic',
-          style: TextStyle(
-            color: Colors.white,
-            fontFamily: "neue"
-          ),
+          style: TextStyle(color: Colors.white, fontFamily: "neue"),
         ),
         leading: Image.asset(
           'assets/images/sunlogo.png',
@@ -47,65 +46,54 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Builder(
           builder: (context) => Padding(
             padding: const EdgeInsets.all(10.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ListTile(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(13.0)),
-                    tileColor: const Color(0xff628395),
-                    contentPadding: const EdgeInsets.only(left: 60.0),
-                    title: Text(
-                      'Selected date range:\nFrom ${startTime == null ? null : DateFormat('yyyy/MM/dd').format(startTime!)}\nTo ${endTime == null ? null : DateFormat('yyyy/MM/dd').format(endTime!)}',
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  _buildChangeDate(),
+
+                  ///Space
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  const SizedBox(
+                    height: 15.0,
+                  ),
+
+                  ///Click Button
+                  ElevatedButton(
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    onPressed: () async {
+                      if (startTime != null) {
+                        await TemporalCubit.instance(context)
+                            .getTemperaturesFromServer(
+                                double.parse(formatter.format(startTime!)),
+                                double.parse(formatter.format(endTime!)),
+                                widget.position);
+                      }
+                    },
+                    child: const Text(
+                      'Click to Refresh',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 15.0),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.0)),
+                      side: const BorderSide(
+                        color: Colors.white,
                       ),
+                      elevation: 3.0,
+                      shadowColor: Colors.cyan,
+                      primary: const Color(0xff262A53),
+                      padding: const EdgeInsets.all(15.0),
                     ),
-                    leading: const Icon(Icons.lock),
-                    onTap: _chageTime),
-
-                ///Space
-                const SizedBox(
-                  height: 10.0,
-                ),
-                const SizedBox(
-                  height: 15.0,
-                ),
-
-                ///Click Button
-                ElevatedButton(
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  onPressed: () async {
-                    if (startTime != null) {
-                      await TemporalCubit.instance(context)
-                          .getTemperaturesFromServer(
-                              double.parse(formatter.format(startTime!)),
-                              double.parse(formatter.format(endTime!)),
-                              widget.position);
-                    }
-                  },
-                  child: const Text(
-                    'Click to Refresh',
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),
                   ),
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12.0)),
-                    side: const BorderSide(
-                      color: Colors.white,
-                    ),
-                    elevation: 3.0,
-                    shadowColor: Colors.cyan,
-                    primary: const Color(0xff262A53),
-                    padding: const EdgeInsets.all(15.0),
-                  ),
-                ),
-                const SizedBox(height: 20),
+                  const SizedBox(height: 20),
 
-                if (startTime != null) const Expanded(child: GraphScreen()),
-              ],
+                  if (startTime != null) const GraphScreen(),
+                ],
+              ),
             ),
           ),
         ),
@@ -113,22 +101,43 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void _chageTime() async {
-    final nowDate = DateTime.now();
+  Widget _buildChangeDate() {
+    return ExpansionPanelList(
+      expandedHeaderPadding: const EdgeInsets.all(0),
+      expansionCallback: (index, val) {
+        setState(() {
+          showDateTime = !val;
+        });
+      },
+      children: [
+        ExpansionPanel(
+          canTapOnHeader: true,
+          isExpanded: showDateTime,
+          backgroundColor: Colors.transparent,
+          headerBuilder: (_, __) => const Align(
+            alignment: Alignment.center,
+            child: Text('Change Date',
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+          ),
+          body: _buildDateRanger(),
+        )
+      ],
+    );
+  }
 
-    final res = await showDateRangePicker(
-        context: context,
-        initialEntryMode: DatePickerEntryMode.inputOnly,
-        initialDateRange: DateTimeRange(
-          start: startTime!,
-          end: endTime!,
-        ),
-        firstDate: DateTime(1980, 1, 1),
-        lastDate: nowDate.subtract(const Duration(days: 2)));
-    if (res == null) return;
-    setState(() {
-      startTime = res.start;
-      endTime = res.end;
-    });
+  Widget _buildDateRanger() {
+    final initialStartDate = DateTime(
+        DateTime.now().year - 1, DateTime.now().month, DateTime.now().day);
+    final initialEndDate = DateTime.now();
+    return DateRanger(
+      borderColors: Colors.white,
+      initialRange: DateTimeRange(start: initialStartDate, end: initialEndDate),
+      onRangeChanged: (range) {
+        setState(() {
+          startTime = range.start;
+          endTime = range.end;
+        });
+      },
+    );
   }
 }

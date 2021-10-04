@@ -28,6 +28,8 @@ class _GraphScreenState extends State<GraphScreen> {
             ),
           );
         }
+
+        print(TemporalCubit.instance(context).temperatures.list.length);
         final temperatures = TemporalCubit.instance(context).temperatures;
         final pressures = TemporalCubit.instance(context).pressures;
         final wind = TemporalCubit.instance(context).wind;
