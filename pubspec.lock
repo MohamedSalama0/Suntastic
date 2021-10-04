@@ -64,6 +64,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
+  date_ranger:
+    dependency: "direct main"
+    description:
+      name: date_ranger
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1"
   dio:
     dependency: "direct main"
     description:
