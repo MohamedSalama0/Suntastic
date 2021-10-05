@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
             double.parse(formatter.format(endTime!))),
         child: Builder(
           builder: (context) => Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(12.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -102,26 +102,36 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildChangeDate() {
-    return ExpansionPanelList(
-      expandedHeaderPadding: const EdgeInsets.all(0),
-      expansionCallback: (index, val) {
-        setState(() {
-          showDateTime = !val;
-        });
-      },
-      children: [
-        ExpansionPanel(
-          canTapOnHeader: true,
-          isExpanded: showDateTime,
-          backgroundColor: Colors.transparent,
-          headerBuilder: (_, __) => const Align(
-            alignment: Alignment.center,
-            child: Text('Change Date',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
-          ),
-          body: _buildDateRanger(),
-        )
-      ],
+    return Container(
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15.0),
+      ),
+      child: ExpansionPanelList(
+        expandedHeaderPadding: const EdgeInsets.all(0.0),
+        expansionCallback: (index, val) {
+          setState(() {
+            showDateTime = !val;
+          });
+        },
+        children: [
+          ExpansionPanel(
+            canTapOnHeader: true,
+            isExpanded: showDateTime,
+            backgroundColor: Colors.transparent,
+            headerBuilder: (_, __) =>  const Align(
+              alignment: Alignment.center,
+              child: Text('    Change Date',
+                  style: TextStyle(
+                      fontSize: 23,
+                      fontWeight: FontWeight.bold,
+                  ),
+              ),
+            ),
+            body: _buildDateRanger(),
+          )
+        ],
+      ),
     );
   }
 
@@ -129,15 +139,19 @@ class _HomeScreenState extends State<HomeScreen> {
     final initialStartDate = DateTime(
         DateTime.now().year - 1, DateTime.now().month, DateTime.now().day);
     final initialEndDate = DateTime.now();
-    return DateRanger(
-      borderColors: Colors.white,
-      initialRange: DateTimeRange(start: initialStartDate, end: initialEndDate),
-      onRangeChanged: (range) {
-        setState(() {
-          startTime = range.start;
-          endTime = range.end;
-        });
-      },
+    return Padding(
+      padding: const EdgeInsets.symmetric( horizontal: 7.0),
+      child: DateRanger(
+        backgroundColor: Color(0xff2C2E43),
+        borderColors: Colors.white,
+        initialRange: DateTimeRange(start: initialStartDate, end: initialEndDate),
+        onRangeChanged: (range) {
+          setState(() {
+            startTime = range.start;
+            endTime = range.end;
+          });
+        },
+      ),
     );
   }
 }

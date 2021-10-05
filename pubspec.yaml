@@ -42,6 +42,7 @@ dependencies:
   google_maps_flutter: ^2.0.9
   intl: ^0.17.0
   date_ranger: ^0.0.1
+  url_launcher: ^6.0.12
 
 dev_dependencies:
   flutter_test:
@@ -54,8 +55,6 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:

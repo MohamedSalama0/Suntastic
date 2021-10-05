@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:suntastic/Models/visualize_data_model.dart';
+import 'package:suntastic/View/solar_panels_screen.dart';
 import 'package:suntastic/View/temperatures_screen.dart';
 import 'package:suntastic/cubits/temporal_cubit.dart';
 import 'package:suntastic/cubits/temporal_states.dart';
@@ -38,8 +39,8 @@ class _GraphScreenState extends State<GraphScreen> {
         return LayoutBuilder(
           builder: (_, constraints) {
             return GridView.count(
-              scrollDirection: Axis.vertical,
               padding: const EdgeInsets.all(20.0),
+              physics: NeverScrollableScrollPhysics(),
               mainAxisSpacing: 15.0,
               crossAxisSpacing: 15.0,
               shrinkWrap: true,
@@ -52,19 +53,19 @@ class _GraphScreenState extends State<GraphScreen> {
                 FeatureTemporalButton(text: 'Wind', data: wind),
                 ElevatedButton(
                   child: Column(
-                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       const Text(
                         'Solar Panels',
                         style: TextStyle(
-                          fontSize: 20.0,
+                          color: Color(0xffFFC947),
+                          fontSize: 22.0,
                           fontFamily: 'neue',
                         ),
                       ),
-                      Image.asset(
-                        'assets/images/amazon-29-226581.png',
-                        scale: 1.2,
-                      ),
+                        Image.asset(
+                          'assets/images/pngegg.png',
+                        ),
                     ],
                   ),
                   style: ElevatedButton.styleFrom(
@@ -73,7 +74,17 @@ class _GraphScreenState extends State<GraphScreen> {
                       borderRadius: BorderRadius.circular(12.0),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) {
+                          return const SolarPanelsScreen();
+                        },
+                      ),
+
+                    );
+                  },
                 ),
               ],
             );
