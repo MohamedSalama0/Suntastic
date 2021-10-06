@@ -44,7 +44,7 @@ Graphs are provided and they are easy to read.
 The user will also find the button called "Solar Panel" which will help them know Solar panels auto-updated prices and there's an option to access a website to buy them online.
 
 
-![WhatsApp Image 2021-10-03 at 6 42 27 AM](https://user-images.githubusercontent.com/88866544/135774176-1d014589-0479-44f2-8eee-40882730c9e2.jpeg)
+![home](https://user-images.githubusercontent.com/88866544/136126824-e1da3f3a-1f4f-40ea-a12c-680b258b1222.PNG)
 
 
 Graphs and Charts will help the users to understand how the energy goes and how the energy was.
