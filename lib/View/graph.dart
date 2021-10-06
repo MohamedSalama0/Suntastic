@@ -19,8 +19,9 @@ class _GraphScreenState extends State<GraphScreen> {
   Widget build(BuildContext context) {
     return Center(child: TemporalCubitBuilder(
       builder: (_, state) {
-        if (state is LoadingTemporalState)
+        if (state is LoadingTemporalState) {
           return const CircularProgressIndicator();
+        }
         if (state is ErrorTemporalState) {
           return Center(
             child: Text(
@@ -40,17 +41,29 @@ class _GraphScreenState extends State<GraphScreen> {
           builder: (_, constraints) {
             return GridView.count(
               padding: const EdgeInsets.all(20.0),
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               mainAxisSpacing: 15.0,
               crossAxisSpacing: 15.0,
               shrinkWrap: true,
               crossAxisCount: 2,
               children: [
                 FeatureTemporalButton(
-                    text: 'Solar irradiance', data: solarIrradians),
-                FeatureTemporalButton(text: 'Temperatures', data: temperatures),
-                FeatureTemporalButton(text: 'Pressures', data: pressures),
-                FeatureTemporalButton(text: 'Wind', data: wind),
+                    text: 'Solar irradiance', data: solarIrradians,
+                  imageBottom: 'assets/images/solar-energy.png',
+                  scaleImageBottom: 6.8,
+                ),
+                FeatureTemporalButton(text: 'Temperatures', data: temperatures,
+                  imageBottom: 'assets/images/high-temperature.png',
+                  scaleImageBottom: 7.2,
+                ),
+                FeatureTemporalButton(text: 'Pressures', data: pressures,
+                  imageBottom: 'assets/images/atmospheric.png',
+                  scaleImageBottom: 8.0,
+                ),
+                FeatureTemporalButton(text: 'Wind', data: wind,
+                  imageBottom: 'assets/images/pngwing.com.png',
+                  scaleImageBottom: 7.0,
+                ),
                 ElevatedButton(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -64,7 +77,7 @@ class _GraphScreenState extends State<GraphScreen> {
                         ),
                       ),
                         Image.asset(
-                          'assets/images/pngegg.png',
+                          'assets/images/amazon-logo.png',
                         ),
                     ],
                   ),

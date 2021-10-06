@@ -75,7 +75,7 @@ class SolarPanelsScreen extends StatelessWidget {
                 ),
               ),
               Image.asset(
-                'assets/images/pngegg.png',
+                'assets/images/amazon-logo.png',
                 scale: 7.0,
               ),
             ],
