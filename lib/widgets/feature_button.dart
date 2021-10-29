@@ -8,11 +8,13 @@ class FeatureTemporalButton extends StatelessWidget {
   const FeatureTemporalButton(
       {Key? key,
       required this.text,
+      this.textSize=20.0,
       required this.data,
       this.imageBottom = '',
       this.scaleImageBottom = 1.0})
       : super(key: key);
   final String text;
+  final double? textSize;
   final VisualizeDataModel data;
   final imageBottom;
   final double scaleImageBottom;
@@ -36,24 +38,27 @@ class FeatureTemporalButton extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-            margin: EdgeInsets.only(top: 35.0),
-            child: Image.asset(
-              '$imageBottom',
-              scale: scaleImageBottom,
+          Expanded(
+            child: Container(
+              margin: const EdgeInsets.only(top: 35.0),
+              child: Image.asset(
+                '$imageBottom',
+                scale: scaleImageBottom,
+              ),
             ),
           ),
           Container(
-            margin: EdgeInsets.only(bottom: 10.0),
+            margin: const EdgeInsets.only(bottom: 10.0),
             child: Text(
               text,
               textAlign: TextAlign.center,
-              maxLines: 2,
-              style: const TextStyle(
-                fontSize: 20.0,
+              // maxLines: 1,
+              softWrap: false,
+              style: TextStyle(
+                fontSize: textSize,
                 fontFamily: 'neue',
                 fontWeight: FontWeight.bold,
-                color: Color(0xffF3F3F3),
+                color: const Color(0xffF3F3F3),
               ),
             ),
           ),

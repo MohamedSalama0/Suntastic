@@ -89,6 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       padding: const EdgeInsets.all(15.0),
                     ),
                   ),
+
                   const SizedBox(height: 20),
 
                   if (startTime != null) const GraphScreen(),
@@ -105,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Container(
       clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15.0),
+        borderRadius: BorderRadius.circular(15.0),
       ),
       child: ExpansionPanelList(
         expandedHeaderPadding: const EdgeInsets.all(0.0),
@@ -119,13 +120,14 @@ class _HomeScreenState extends State<HomeScreen> {
             canTapOnHeader: true,
             isExpanded: showDateTime,
             backgroundColor: Colors.transparent,
-            headerBuilder: (_, __) =>  const Align(
+            headerBuilder: (_, __) => const Align(
               alignment: Alignment.center,
-              child: Text('    Change Date',
-                  style: TextStyle(
-                      fontSize: 23,
-                      fontWeight: FontWeight.bold,
-                  ),
+              child: Text(
+                '    Change Date',
+                style: TextStyle(
+                  fontSize: 23,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             body: _buildDateRanger(),
@@ -140,11 +142,12 @@ class _HomeScreenState extends State<HomeScreen> {
         DateTime.now().year - 1, DateTime.now().month, DateTime.now().day);
     final initialEndDate = DateTime.now();
     return Padding(
-      padding: const EdgeInsets.symmetric( horizontal: 7.0),
+      padding: const EdgeInsets.symmetric(horizontal: 7.0),
       child: DateRanger(
-        backgroundColor: Color(0xff2C2E43),
+        backgroundColor: const Color(0xff2C2E43),
         borderColors: Colors.white,
-        initialRange: DateTimeRange(start: initialStartDate, end: initialEndDate),
+        initialRange:
+            DateTimeRange(start: initialStartDate, end: initialEndDate),
         onRangeChanged: (range) {
           setState(() {
             startTime = range.start;

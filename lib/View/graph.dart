@@ -48,19 +48,27 @@ class _GraphScreenState extends State<GraphScreen> {
               crossAxisCount: 2,
               children: [
                 FeatureTemporalButton(
-                    text: 'Solar irradiance', data: solarIrradians,
+                  text: 'Solar irradiance',
+                  data: solarIrradians,
                   imageBottom: 'assets/images/solar-energy.png',
                   scaleImageBottom: 6.8,
+                  textSize: 19.0,
                 ),
-                FeatureTemporalButton(text: 'Temperatures', data: temperatures,
+                FeatureTemporalButton(
+                  text: 'Temperatures',
+                  data: temperatures,
                   imageBottom: 'assets/images/high-temperature.png',
                   scaleImageBottom: 7.2,
                 ),
-                FeatureTemporalButton(text: 'Pressures', data: pressures,
+                FeatureTemporalButton(
+                  text: 'Pressures',
+                  data: pressures,
                   imageBottom: 'assets/images/atmospheric.png',
                   scaleImageBottom: 8.0,
                 ),
-                FeatureTemporalButton(text: 'Wind', data: wind,
+                FeatureTemporalButton(
+                  text: 'Wind',
+                  data: wind,
                   imageBottom: 'assets/images/pngwing.com.png',
                   scaleImageBottom: 7.0,
                 ),
@@ -76,9 +84,9 @@ class _GraphScreenState extends State<GraphScreen> {
                           fontFamily: 'neue',
                         ),
                       ),
-                        Image.asset(
-                          'assets/images/amazon-logo.png',
-                        ),
+                      Image.asset(
+                        'assets/images/amazon-logo.png',
+                      ),
                     ],
                   ),
                   style: ElevatedButton.styleFrom(
@@ -95,7 +103,6 @@ class _GraphScreenState extends State<GraphScreen> {
                           return const SolarPanelsScreen();
                         },
                       ),
-
                     );
                   },
                 ),

@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         splashIconSize: double.infinity,
         splashTransition: SplashTransition.decoratedBoxTransition,
         pageTransitionType: PageTransitionType.bottomToTop,
-        nextScreen: LoginScreen(),
+        nextScreen: const LoginScreen(),
       ),
     );
   }
