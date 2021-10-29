@@ -44,7 +44,7 @@ Graphs are provided and they are easy to read.
 The user will also find the button called "Solar Panel" which will help them know Solar panels auto-updated prices and there's an option to access a website to buy them online.
 
 
-![WhatsApp Image 2021-10-03 at 6 42 27 AM](https://user-images.githubusercontent.com/88866544/135774176-1d014589-0479-44f2-8eee-40882730c9e2.jpeg)
+![home](https://user-images.githubusercontent.com/88866544/136126824-e1da3f3a-1f4f-40ea-a12c-680b258b1222.PNG)
 
 
 Graphs and Charts will help the users to understand how the energy goes and how the energy was.
@@ -52,15 +52,17 @@ Graphs and Charts will help the users to understand how the energy goes and how 
 
   Users have the option to choose a specific location to calculate and monitor the energy in his location.
   
+![solar](https://user-images.githubusercontent.com/88866544/136127118-45a4000c-b71c-4d7e-89bd-295710b21813.PNG)
 
-![WhatsApp Image 2021-10-03 at 6 49 04 AM](https://user-images.githubusercontent.com/88866544/135774203-31fd4d5d-1547-47ee-962f-71436466def4.jpeg)
+# Solar Panels
+We create A screen that give you accses to amazon.com to buy any solar panels generator if you need
 
+![amazon](https://user-images.githubusercontent.com/88866544/136127424-569c7a4e-0122-493d-b31f-aa2a1469ed86.PNG)
 
  We converted the existed daily average energy into weekly average energy over a year. We also provided a full year data for 2020 solar energy to compare it with 2019 or even with the current year. Meanwhile, users can predict the coming potential energy from the sun.
  
- 
-![WhatsApp Image 2021-10-03 at 6 42 26 AM](https://user-images.githubusercontent.com/88866544/135774212-7f13b617-3ae6-4e08-9c7c-fca6baec3fa3.jpeg)
-
+ ![date](https://user-images.githubusercontent.com/88866544/136127144-1b6d74c3-b707-4661-896b-83f428e6b2e8.PNG)
+![date2](https://user-images.githubusercontent.com/88866544/136127154-9a24848b-1b5d-4c3b-b4c8-b14497e783b4.PNG)
 
 We have provided an option for the user to select date range for the period of time which they would like to get information about like how much solar energy reaches their area. Also this helps to know when seasons of the year or even the clouds reduce the amount of the solar energy which reaches their area.
 
