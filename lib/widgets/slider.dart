@@ -12,14 +12,23 @@ class _SliderWidgetState extends State<SliderWidget> {
   double width = 400;
   double height = 300;
   int counter = 0;
+
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text('Graph Width: $width Pixel',
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+        Text(
+          'Graph Width: $width Pixel',
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+            fontFamily: 'neue'
+          ),
+        ),
         Expanded(
           child: Slider(
+            activeColor: Colors.orange,
+            thumbColor: Color(0xff4B3869),
             divisions: 10,
             value: width,
             onChanged: (x) {

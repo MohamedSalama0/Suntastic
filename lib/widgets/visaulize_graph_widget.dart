@@ -1,4 +1,5 @@
 import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:suntastic/Models/visualize_data_model.dart';
 import 'package:suntastic/cubits/temporal_cubit.dart';
@@ -7,6 +8,7 @@ import 'package:suntastic/widgets/slider.dart';
 class VisualizeGraphWidget extends StatelessWidget {
   const VisualizeGraphWidget({Key? key, required this.data}) : super(key: key);
   final VisualizeDataModel data;
+
   @override
   Widget build(BuildContext context) {
     final graphData = data.graphData;
@@ -24,13 +26,15 @@ class VisualizeGraphWidget extends StatelessWidget {
               child: Stack(
                 children: [
                   Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 30),
+                      margin: const EdgeInsets.symmetric(horizontal: 35),
                       child: Text(data.measureUnit,
-                          style: const TextStyle(fontWeight: FontWeight.bold))),
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold))),
                   Padding(
                     padding: const EdgeInsets.only(right: 20.0),
                     child: LineChart(
                       LineChartData(
+                        backgroundColor: Colors.black12,
                         minY: minVal.toInt() - (minVal.toInt() % 10) - 10,
                         maxY: maxVal.toInt() + (maxVal.toInt() % 10) + 10,
                         lineBarsData: _allCharts(),
@@ -41,18 +45,50 @@ class VisualizeGraphWidget extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                      bottom: 50,
-                      right: 10,
-                      child: Text(data.graphDisplayName,
-                          style: const TextStyle(fontWeight: FontWeight.bold)))
+                    bottom: 60,
+                    right: 50,
+                    child: Text(
+                      data.graphDisplayName,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
           ),
         ),
-        _buildText('Average', graphData.totalAvg.ceil()),
-        _buildText('Min', graphData.minVal.ceil()),
-        _buildText('Max', graphData.maxVal.ceil()),
+        Container(
+          height: 40,
+          padding: const EdgeInsets.all(10.0),
+          decoration: BoxDecoration(
+            color: const Color(0xff4B3869),
+            borderRadius: BorderRadius.circular(12.0),
+          ),
+          child: _buildText(
+            'Average =',
+            graphData.totalAvg.ceil(),
+          ),
+        ),
+        const SizedBox(height: 5),
+        Container(
+            height: 40,
+            padding: const EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              color: const Color(0xff4B3869),
+              borderRadius: BorderRadius.circular(12.0),
+            ),
+            child: _buildText('Min =', graphData.minVal.ceil())),
+        const SizedBox(height: 5),
+        Container(
+            height: 40,
+            padding: const EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              color: const Color(0xff4B3869),
+              borderRadius: BorderRadius.circular(12.0),
+            ),
+            child: _buildText('Max =', graphData.maxVal.ceil())),
         const Expanded(child: SizedBox()),
         const Padding(
           padding: EdgeInsets.only(left: 8.0),
@@ -70,7 +106,7 @@ class VisualizeGraphWidget extends StatelessWidget {
             fontWeight: FontWeight.bold, fontSize: 20, color: Colors.orange),
       ),
       TextSpan(
-        text: '${data.modelName} is $val ',
+        text: ' $val ',
         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       ),
       TextSpan(

@@ -15,6 +15,7 @@ class TemporalCubit extends Cubit<TemporalStates> {
       : super(IntialTemporalState()) {
     getTemperaturesFromServer(startTime, endTime, locationToSearch);
   }
+
   static TemporalCubit instance(BuildContext context) =>
       BlocProvider.of<TemporalCubit>(context);
 

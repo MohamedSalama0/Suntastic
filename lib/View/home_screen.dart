@@ -123,9 +123,9 @@ class _HomeScreenState extends State<HomeScreen> {
             headerBuilder: (_, __) => const Align(
               alignment: Alignment.center,
               child: Text(
-                '    Change Date',
+                '           Change Date',
                 style: TextStyle(
-                  fontSize: 23,
+                  fontSize: 21,
                   fontWeight: FontWeight.bold,
                 ),
               ),
