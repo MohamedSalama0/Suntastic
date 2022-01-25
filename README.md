@@ -44,15 +44,16 @@ Graphs are provided and they are easy to read.
 The user will also find the button called "Solar Panel" which will help them know Solar panels auto-updated prices and there's an option to access a website to buy them online.
 
 
-![home](https://user-images.githubusercontent.com/88866544/136126824-e1da3f3a-1f4f-40ea-a12c-680b258b1222.PNG)
+![hom](https://user-images.githubusercontent.com/88866544/151069370-3fe71fe7-0be1-4aad-a9ae-11b94563b607.PNG)
 
 
 Graphs and Charts will help the users to understand how the energy goes and how the energy was.
 
 
-  Users have the option to choose a specific location to calculate and monitor the energy in his location.
-  
-![solar](https://user-images.githubusercontent.com/88866544/136127118-45a4000c-b71c-4d7e-89bd-295710b21813.PNG)
+Users have the option to choose a specific location to calculate and monitor the energy in his location.
+
+![sol](https://user-images.githubusercontent.com/88866544/151069561-cbb1150c-038e-4cf4-bacf-a0e848057465.PNG)
+
 
 # Solar Panels
 We create A screen that give you accses to amazon.com to buy any solar panels generator if you need
