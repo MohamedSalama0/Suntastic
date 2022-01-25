@@ -17,10 +17,11 @@ class GraphScreen extends StatefulWidget {
 class _GraphScreenState extends State<GraphScreen> {
   @override
   Widget build(BuildContext context) {
-    return Center(child: TemporalCubitBuilder(
+    return Center(child:
+    TemporalCubitBuilder(
       builder: (_, state) {
         if (state is LoadingTemporalState) {
-          return const CircularProgressIndicator();
+          return Center(child: const CircularProgressIndicator());
         }
         if (state is ErrorTemporalState) {
           return Center(
@@ -51,37 +52,41 @@ class _GraphScreenState extends State<GraphScreen> {
                   text: 'Solar irradiance',
                   data: solarIrradians,
                   imageBottom: 'assets/images/solar-energy.png',
-                  scaleImageBottom: 6.8,
-                  textSize: 19.0,
+                  scaleImageBottom: 9.0,
+                  // textSize: 19.0,
                 ),
                 FeatureTemporalButton(
                   text: 'Temperatures',
                   data: temperatures,
                   imageBottom: 'assets/images/high-temperature.png',
-                  scaleImageBottom: 7.2,
+                  scaleImageBottom: 9.2,
                 ),
                 FeatureTemporalButton(
                   text: 'Pressures',
                   data: pressures,
                   imageBottom: 'assets/images/atmospheric.png',
-                  scaleImageBottom: 8.0,
+                  scaleImageBottom: 9.0,
                 ),
                 FeatureTemporalButton(
                   text: 'Wind',
                   data: wind,
                   imageBottom: 'assets/images/pngwing.com.png',
-                  scaleImageBottom: 7.0,
+                  scaleImageBottom: 8.0,
                 ),
                 ElevatedButton(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      const Text(
-                        'Solar Panels',
-                        style: TextStyle(
-                          color: Color(0xffFFC947),
-                          fontSize: 22.0,
-                          fontFamily: 'neue',
+                      Container(
+                        margin: const EdgeInsets.only(bottom: 10),
+                        child: const Text(
+                          'Solar Panels',
+                          textScaleFactor: 1,
+                          style: TextStyle(
+                            color: Color(0xffFFC947),
+                            fontSize: 18.0,
+                            fontFamily: 'neue',
+                          ),
                         ),
                       ),
                       Image.asset(

@@ -39,7 +39,7 @@ dependencies:
   bloc: ^7.2.0
   flutter_bloc: ^7.3.0
   dio: ^4.0.0
-  google_maps_flutter: ^2.0.9
+  google_maps_flutter:
   intl: ^0.17.0
   date_ranger: ^0.0.1
   url_launcher: ^6.0.12

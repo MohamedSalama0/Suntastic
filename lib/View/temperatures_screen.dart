@@ -21,6 +21,7 @@ class TemperaturesGraphScreen extends StatefulWidget {
 
 class _TemperaturesGraphScreenState extends State<TemperaturesGraphScreen> {
   GraphType graphType = GraphType.weekly;
+
   @override
   void initState() {
     widget.graphs.changeGraphDisplayType(graphType);
@@ -32,24 +33,36 @@ class _TemperaturesGraphScreenState extends State<TemperaturesGraphScreen> {
     return BlocProvider.value(
         value: widget.cubit,
         child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: const Color(0xff45526C),
+            elevation: 0,
+          ),
           backgroundColor: const Color(0xff45526C),
           body: SafeArea(
             child: Center(
               child: TemporalCubitBuilder(
                 builder: (_, state) {
                   return SizedBox(
-                    height: 600.0,
+                    height: 700.0,
                     child: Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text('${widget.name} Graph Data',
-                              style: const TextStyle(
-                                  fontSize: 24, color: Colors.orange)),
+                          padding: const EdgeInsets.all(1.0),
+                          child: Text(
+                            '${widget.name} Graph Data',
+                            style: const TextStyle(
+                                fontSize: 20,
+                                color: Colors.orange,
+                                fontFamily: 'neue'),
+                          ),
                         ),
-                        _buildChooseGraphType(),
+                        Container(
+                          padding: const EdgeInsets.only(right: 8),
+                          child: _buildChooseGraphType(),
+                        ),
                         Expanded(
-                            child: VisualizeGraphWidget(data: widget.graphs)),
+                          child: VisualizeGraphWidget(data: widget.graphs),
+                        ),
                       ],
                     ),
                   );
@@ -64,9 +77,17 @@ class _TemperaturesGraphScreenState extends State<TemperaturesGraphScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        const Text('Display Graph :  ',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+        const Text(
+          'Display Graph :  ',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 15,
+          ),
+        ),
         DropdownButton<GraphType>(
+          style: const TextStyle(
+            fontSize: 12
+          ),
           value: graphType,
           onChanged: (val) {
             setState(() {
