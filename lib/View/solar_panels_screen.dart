@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:suntastic/widgets/product_card.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class SolarPanelsScreen extends StatelessWidget {
   const SolarPanelsScreen({Key? key}) : super(key: key);

@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:suntastic/Models/visualize_data_model.dart';
-import 'package:suntastic/View/temperatures_screen.dart';
 import 'package:suntastic/cubits/temporal_cubit.dart';
+
+import '../View/AllPropertiesGraphScreen.dart';
 
 class FeatureTemporalButton extends StatelessWidget {
   const FeatureTemporalButton(
@@ -37,7 +37,7 @@ class FeatureTemporalButton extends StatelessWidget {
       },
       child: Container(
         // color: Colors.orange,
-        margin: EdgeInsets.only(bottom: 12),
+        margin: const EdgeInsets.only(bottom: 12),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
