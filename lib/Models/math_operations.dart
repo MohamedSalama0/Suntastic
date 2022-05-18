@@ -16,6 +16,7 @@ class MathOperations {
   MathOperations(this._list, this.graphType) {
     _makeCalculation();
   }
+  
   void _makeCalculation() {
     _list.removeWhere((element) => element.temp == -999);
 

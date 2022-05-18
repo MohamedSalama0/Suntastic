@@ -1,8 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:suntastic/Models/visualize_data_model.dart';
 import 'package:suntastic/View/solar_panels_screen.dart';
-import 'package:suntastic/View/temperatures_screen.dart';
 import 'package:suntastic/cubits/temporal_cubit.dart';
 import 'package:suntastic/cubits/temporal_states.dart';
 import 'package:suntastic/widgets/feature_button.dart';
@@ -21,7 +18,7 @@ class _GraphScreenState extends State<GraphScreen> {
     TemporalCubitBuilder(
       builder: (_, state) {
         if (state is LoadingTemporalState) {
-          return Center(child: const CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
         if (state is ErrorTemporalState) {
           return Center(

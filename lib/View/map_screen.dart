@@ -11,7 +11,7 @@ class _MapScreenState extends State<MapScreen> {
   late GoogleMapController mapController;
   final Set<Marker> _markers = {};
   final LatLng _center = const LatLng(30.1356215, 31.2928607);
-  late Marker marker = Marker(markerId: MarkerId('1'), position: _center);
+  late Marker marker = Marker(markerId: const MarkerId('1'), position: _center);
   @override
   void initState() {
     super.initState();
@@ -22,11 +22,11 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Select location'),
+          title: const Text('Select location'),
           centerTitle: true,
           actions: [
             IconButton(
-                onPressed: _showDailogInformation, icon: Icon(Icons.info))
+                onPressed: _showDailogInformation, icon: const Icon(Icons.info))
           ],
         ),
         body: SafeArea(
@@ -43,7 +43,7 @@ class _MapScreenState extends State<MapScreen> {
   void _showDailogInformation() async {
     await showDialog(
         context: context,
-        builder: (_) => AlertDialog(
+        builder: (_) => const AlertDialog(
               title: Text('Information about the app'),
               content: Text(
                 'To change the value of location :\n\tclick on the button then click at any area of map',
@@ -64,7 +64,7 @@ class _MapScreenState extends State<MapScreen> {
           _markers.clear();
         });
         setState(() {
-          _markers.add(Marker(markerId: MarkerId('1'), position: x.target));
+          _markers.add(Marker(markerId: const MarkerId('1'), position: x.target));
         });
       },
       onCameraIdle: () => print('Idle'),
@@ -85,10 +85,10 @@ class _MapScreenState extends State<MapScreen> {
       onPressed: () {
         Navigator.pop<LatLng>(context, _markers.first.position);
       },
-      child: Text('Save location'),
+      child: const Text('Save location'),
       style: ButtonStyle(
           textStyle: materialProperty(
-              TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+              const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
           backgroundColor: materialProperty(Colors.amber)),
     );
   }

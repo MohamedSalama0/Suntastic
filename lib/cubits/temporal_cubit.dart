@@ -11,6 +11,7 @@ typedef TemporalCubitBuilder = BlocBuilder<TemporalCubit, TemporalStates>;
 typedef TemporalCubitListener = BlocListener<TemporalCubit, TemporalStates>;
 
 class TemporalCubit extends Cubit<TemporalStates> {
+
   TemporalCubit(LatLng locationToSearch, double startTime, double endTime)
       : super(IntialTemporalState()) {
     getTemperaturesFromServer(startTime, endTime, locationToSearch);
@@ -27,8 +28,8 @@ class TemporalCubit extends Cubit<TemporalStates> {
 
   double graphWidth = 400;
 
-  Future<void> getTemperaturesFromServer(
-      double startTime, double endTime, LatLng location) async {
+  Future<void> getTemperaturesFromServer(double startTime, double endTime, LatLng location) 
+  async {
     emit(LoadingTemporalState());
     try {
       final res = await fetchTemperatures(TemporalDailyPointModel(

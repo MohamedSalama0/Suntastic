@@ -5,21 +5,21 @@ import 'package:suntastic/Models/visualize_data_model.dart';
 import 'package:suntastic/cubits/temporal_cubit.dart';
 import 'package:suntastic/widgets/visaulize_graph_widget.dart';
 
-class TemperaturesGraphScreen extends StatefulWidget {
+class AllPropertiesGraphScreen extends StatefulWidget {
   final TemporalCubit cubit;
   final VisualizeDataModel graphs;
   final String name;
 
-  TemperaturesGraphScreen(
+  const AllPropertiesGraphScreen(
       {Key? key, required this.cubit, required this.graphs, required this.name})
       : super(key: key);
 
   @override
-  _TemperaturesGraphScreenState createState() =>
-      _TemperaturesGraphScreenState();
+  _AllPropertiesGraphScreenState createState() =>
+      _AllPropertiesGraphScreenState();
 }
 
-class _TemperaturesGraphScreenState extends State<TemperaturesGraphScreen> {
+class _AllPropertiesGraphScreenState extends State<AllPropertiesGraphScreen> {
   GraphType graphType = GraphType.weekly;
 
   @override

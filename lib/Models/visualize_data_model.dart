@@ -22,7 +22,7 @@ abstract class VisualizeDataModel {
     if (graphType == GraphType.daily) graphDisplayName = '#Day';
     if (graphType == GraphType.weekly) graphDisplayName = '#Week';
     if (graphType == GraphType.monthly) graphDisplayName = '#Month';
-    if (graphType == GraphType.daily) graphDisplayName = '#Day';
+    // if (graphType == GraphType.daily) graphDisplayName = '#Day';
   }
 
   String get measureUnit;
@@ -45,7 +45,7 @@ class PressuresModel extends VisualizeDataModel {
       : super.fromMap(key, map);
 
   @override
-  String get measureUnit => 'kPa';
+  String get measureUnit => 'Pa';
 
   @override
   String get modelName => 'surface pressure';

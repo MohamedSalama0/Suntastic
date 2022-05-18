@@ -70,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       context, MaterialPageRoute(builder: (_) => MapScreen()));
                   if (recievedData == null) return;
                   controller.text =
-                      '(${recievedData.latitude} , ${recievedData.longitude})';
+                  '(${recievedData.latitude} , ${recievedData.longitude})';
                   locationToSearch = recievedData;
                 },
                 keyboardType: TextInputType.number,

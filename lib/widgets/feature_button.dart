@@ -31,7 +31,7 @@ class FeatureTemporalButton extends StatelessWidget {
       onPressed: () {
         Navigator.push(context,
             MaterialPageRoute(builder: (BuildContext hossam) {
-          return TemperaturesGraphScreen(
+          return AllPropertiesGraphScreen(
               graphs: data, cubit: TemporalCubit.instance(context), name: text);
         }));
       },

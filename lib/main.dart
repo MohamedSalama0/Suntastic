@@ -5,8 +5,8 @@ import 'package:suntastic/services/dio_helper.dart';
 import 'View/login_screen.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:page_transition/page_transition.dart';
-
 import 'bloc_observer.dart';
+
 
 void main() {
   Bloc.observer = MyBlocObserver();

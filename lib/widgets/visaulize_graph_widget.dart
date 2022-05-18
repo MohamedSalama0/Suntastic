@@ -1,5 +1,4 @@
 import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:suntastic/Models/visualize_data_model.dart';
 import 'package:suntastic/cubits/temporal_cubit.dart';
